@@ -1,0 +1,308 @@
+/*Request*/
+#client{
+    margin-bottom:0px;
+}
+
+
+
+#request input, #request select, #request textarea{
+    font-size: 0.9em;
+}
+
+/*Request Url*/
+#request .requesturl {
+    width: 800px;
+    height: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#request .requesturl label {
+    margin-left: 10px;
+    vertical-align: middle;
+    color: #D9D9D9;
+    font-size: 14px;
+    font-weight: bold;
+    background: #F7F7F7;
+    border: solid 2px #EEE;
+    color: #C2C2C2;
+    padding: 6px;
+    display: block;
+    float:left;
+}
+
+#request .requesturl #url {
+    margin-left: 10px;
+    width:600px;
+    vertical-align: middle;
+    padding-left:0;
+    display: block;
+    float:left;
+}
+
+#request .requesturl #sendbutton {
+    width: 63px;
+    vertical-align: middle;
+    margin-left: 10px;
+    display: block;
+    float:left;
+    
+}
+
+/*Request Method*/
+#request #requestmethod {
+    width: 110px;
+    vertical-align: middle;
+    display: block;
+    font-size: 14px;
+    float:left;
+}
+
+#request .requestparams{
+    width: 900px;
+    margin: auto;
+}
+
+/*Request Basic OAuth*/
+#request .authentication{
+    margin: 0px 10px 30px 0px;
+    float:left;
+}
+
+#request .authentication h2, #request .requestbody h2, #request .headers h2{
+    margin: 0 0 10px 0;
+    padding-top: 0;
+}
+
+#request .authentication ul{
+    list-style: none;
+    padding: 10px;
+    border: solid 2px #EEE;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    
+}
+
+#request .authentication li{
+    padding: 0;
+    height: 30px;
+    margin: 10px 10px 0px 0;
+    text-align:right;
+}
+
+#request .authentication li label{
+    width: 50px;
+    text-align:right;
+    font-size:0.9em;
+}
+
+#request .authentication input{
+    width: 150px;
+    height: 10px;
+    font-size: 12px;
+    margin: 0px;
+}
+
+/*Request Body*/
+#request .requestbody {
+    width: 68%;
+    padding: 0;
+    float: right;
+    margin:0;
+}
+
+#request .requestbody textarea{
+    display: block;
+    width: 615px;
+    height: 80px;
+    padding: 10px;
+}
+
+/*Request Headers*/
+#request .headers {
+    width: 69%;
+    padding: 10px 0 10px 0;
+    float: right;
+    margin:0;
+    margin-bottom:30px;
+}
+
+#request .headers .headeradder{
+
+}
+
+#request .headers tbody .headeradder #requestheaderkey{
+    width: 150px;
+    height: 25px;
+    background-color: none;
+}
+
+#request .headers tbody .headeradder #requestheadervalue{
+    width: 440px;
+    padding: 4px 0 4px 6px;
+}
+
+#request .headers tbody .headeradder #addheaderbutton{
+    width: 30px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+#request .headers table{
+    margin:0px;
+    width: 100%;
+}
+
+#request .headers table tbody tr{
+    font-size: 0.9em;
+    font-family: courier;
+    height: 20px;
+    width: 100%;
+    padding: 0;
+}
+
+#request .headers table colgroup .keycol{
+    width: 130px;
+}
+
+#request .headers table tbody .keycol{
+    padding-left: 10px;
+    background-color: #eee;
+    background-position: 0 5px;
+}
+
+#request .headers table tbody .nobackground{
+    background-color: transparent;
+    padding-left: 0px;
+}
+
+#request .headers table colgroup .valuecol{
+    width: 400px;
+}
+
+#request .headers table tbody .valuecol{
+    padding: 0px 0px 0px 18px;
+}
+
+#request .headers table colgroup .buttoncol{
+    width: 20px;
+}
+
+#request .headers table tbody .buttoncol{
+    padding:0px;
+    padding-left: 10px;
+}
+
+#request .headers table tbody .deleteheaderbutton{
+    width: 30px;
+    height: 20px;
+    padding: 0;
+    vertical-align: middle;
+}
+
+/*<---------- Response ---------->*/
+#response{
+    width: 100%;
+    min-height: 200px;
+    height: auto;
+    background-color: #FFF;
+    border: solid 1px #DDD;
+    margin: 0 auto;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-family: courier;
+}
+
+#response .responsestatus /*, #response .responsebody*/{
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: #FAFAFA;
+    font-size: 14px;
+    font-family: courier;
+    color: #666;
+    height: 25px;
+    padding: 5px 10px 5px 10px;
+    margin: 0px;
+    line-height: 20px;
+    
+}
+
+#response div.Shadow{
+    background-position: 0 -5px;
+}
+
+#response .responsestatus p{
+    vertical-align: middle;
+    padding-left: 30px;
+    margin: 0px;
+    margin-top:3px;
+    font-weight:bold;
+}
+
+#response .okstatus p{
+    background: transparent url('../images/check.png') no-repeat;
+}
+
+#response .warningstatus p{
+    background: transparent url('../images/warning.png') no-repeat;
+    background-position: 0 0px;
+}
+
+#response .errorstatus p{
+    background: transparent url('../images/error-small.png') no-repeat;
+}
+
+#response .responseheaders{
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 0px;
+}
+
+#response .responseheaders dl dt{
+    display: inline-block;
+    width: 25%;
+    padding: 1px;
+    padding-left: 10px;
+    background-color: #F7F7F7;
+    margin-bottom: 2px;
+}
+
+#response .responseheaders dl dd{
+    display: inline-block;
+    width: 70%;
+    padding-left: 6px;
+}
+
+
+#response .responsebody pre{
+    overflow: auto;
+    border-left-width:1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#response .responsebody pre code{
+    font-size:0.9em;
+}
+
+.clear {
+    height: 1px;
+    min-height: 1px;
+    clear: both;
+}
+

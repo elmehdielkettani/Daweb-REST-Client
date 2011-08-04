@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block rootHead %}
+
+{% block head %}{% endblock %}
+
+{% endblock %}
+
+{% block rootContent %}
+
+<div id="header">
+    <div id="headerwrapper">
+        {% comment %}
+        <ul id="mainmenu">
+            <li class="{% ifequal page.menu 1 %} 1 {% endifequal %}"><a target="_self" href="/invoicers/">Invoicers</a></li>
+            <li class="{% ifequal page.menu 2 %} 1 {% endifequal %}"><a target="_self" href="/users/">Users</a></li>
+            <li class="{% ifequal page.menu 3 %} 1 {% endifequal %}"><a target="_self" href="/developers/">Developers</a></li>
+        </ul>
+        {% endcomment %}
+    </div>
+</div>
+<div id="wrapper">
+    <div id="content">
+        <h1>Online REST Client</h1>
+        <h3>The Solution for testing REST APIs right from your browser</h3>
+        {% block content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema">
+    <head>
+        <title>REST Client</title>
+        <meta name="robots" content="noimageindex" />
+        <meta name="googlebot" content="noimageindex" />
+        <meta name="slurp" content="nodir" />
+        <meta name="author" content="El Mehdi El Kettani" />
+        <meta name="copyright" content="2011" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <meta name="description" content="A full featured Online REST Client allowing you to make REST call right from your browser" />
+        <meta name="keywords" content="REST, client, Javascript, browser, online, calls, api" />
+
+        {% comment %}
+        <meta property="og:type" content="webapp" />
+        <meta property="og:site_name" content="Online REST Client" />
+        <meta property="og:title" content="REST Client" />
+        <meta property="og:email" content="contact@greendizer.com" />
+        <meta property="og:street-address" content="101 rue de Sevres" />
+        <meta property="og:postal-code" content="75006" />
+        <meta property="og:locality" content="Paris" />
+        <meta property="og:country-name" content="France" />
+        {% endcomment %}
+
+        {% comment %}
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        {% endcomment %}
+        <script type="text/javascript" src="{{ MEDIA_URL }}scripts/libs/jquery.min.js"></script>
+
+        <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}styles/main.css"/>
+
+        {% block rootHead %}{% endblock %}
+
+    </head>
+    <body>
+        <div>
+            <div id="main">
+
+                {% block rootContent %} {% endblock %}
+
+                <div id="footer">
+                    <ul class="InlineList">
+                        <li>&copy; 2011 Mehdi El Kettani - All rights reserved.</li>
+                        <li><a href="/sitemap/">Site map</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
