@@ -14,7 +14,7 @@ for k in [k for k in sys.modules if k.startswith('django')]:
 os.environ['DJANGO_SETTINGS_MODULE'] = 'restclient.settings'
 
 # Use django 1.2    
-use_library('django', '1.1')
+use_library('django', '1.2')
 
 # Force sys.path to have our own directory first, in case we want to import
 # from it.

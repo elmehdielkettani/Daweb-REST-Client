@@ -3,14 +3,12 @@ import re
 import logging
 from urllib2 import HTTPError
 from django.http import HttpResponse
-from gaesessions import get_current_session
-from google.appengine.api import memcache
 from django.utils import simplejson
 
 
-def call_proxy(httpRequest, url):
-
-    #logging.info("Session Variables = %s " % httpRequest.session)
+def call_proxy(httpRequest):
+    
+    url = httpRequest.GET["host"]
 
     if "urls" in httpRequest.session:
         urls = httpRequest.session["urls"]
@@ -22,6 +20,7 @@ def call_proxy(httpRequest, url):
 
     regex = re.compile('^HTTP_')
     requestHeaders = dict((regex.sub('', header), value) for (header, value) in httpRequest.META.items() if header.startswith('HTTP_'))
+    
 
     req = urllib2.Request(url, None, requestHeaders)
     try:

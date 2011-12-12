@@ -85,13 +85,11 @@
                 var method = RequestMethod.val()
             }
 
-
-
             //Send HTTP Request
             loadingProgress.show();
             statusText.hide();
             $.ajax({
-                url: '/proxy/url/' + UrlInput.val(),
+                url: '/proxy/url/?host=' + encodeURIComponent(UrlInput.val()),
                 type: method,
                 data: RequestBodyField.val(),
                 accepts: false,
@@ -358,7 +356,6 @@
 			  scroll: false,
 			  highlight: false
 			});
-            alert("test");
         }
 
     });
