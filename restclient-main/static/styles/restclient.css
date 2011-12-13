@@ -59,14 +59,14 @@
 }
 
 #request .requestparams{
-    width: 900px;
     margin: auto;
 }
 
 /*Request Basic OAuth*/
 #request .authentication{
-    margin: 0px 10px 30px 0px;
+    margin: 0px 0px 30px 0px;
     float:left;
+    width: 25%;
 }
 
 #request .authentication h2, #request .requestbody h2, #request .headers h2{
@@ -89,57 +89,56 @@
     height: 30px;
     margin: 10px 10px 0px 0;
     text-align:right;
+    display:block;
 }
 
 #request .authentication li label{
-    width: 50px;
+    width: 10px;
     text-align:right;
     font-size:0.9em;
 }
 
 #request .authentication input{
-    width: 150px;
+    width: 80%;
     height: 10px;
     font-size: 12px;
     margin: 0px;
 }
 
 /*Request Body*/
-#request .requestbody {
-    width: 68%;
-    padding: 0;
-    float: right;
-    margin:0;
-}
 
-#request .requestbody textarea{
-    display: block;
-    width: 615px;
-    height: 80px;
-    padding: 10px;
-}
-
-/*Request Headers*/
-#request .headers {
-    width: 69%;
-    padding: 10px 0 10px 0;
+#request .requestbody{
+    width: 73%;
+    padding: 0px 0 10px 10px;
     float: right;
     margin:0;
     margin-bottom:30px;
 }
 
-#request .headers .headeradder{
+#request .requestbody textarea{
+    display: block;
+    width: 98%;
+    height: 80px;
+    padding: 1%;
+}
 
+/*Request Headers*/
+#request .headers{
+    width: 73%;
+    padding: 0px 0 10px 10px;
+    float: right;
+    margin:0;
+    margin-bottom:30px;
 }
 
 #request .headers tbody .headeradder #requestheaderkey{
-    width: 150px;
+    width: 100%;
     height: 25px;
     background-color: none;
 }
 
 #request .headers tbody .headeradder #requestheadervalue{
-    width: 440px;
+    width: 95%;
     padding: 4px 0 4px 6px;
 }
 
@@ -265,10 +264,9 @@
 }
 
 #response .responseheaders{
-    width: 100%;
-    padding: 10px;
-    margin: 10px;
-    margin-top: 0px;
+    width: 98%;
+    padding: 1%;
+    padding-top:0px;
 }
 
 #response .responseheaders dl dt{
@@ -282,22 +280,13 @@
 
 #response .responseheaders dl dd{
     display: inline-block;
-    width: 70%;
+    width: 65%;
     padding-left: 6px;
 }
 
-
-#response .responsebody pre{
-    overflow: auto;
-    border-left-width:1px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-#response .responsebody pre code{
-    font-size:0.9em;
+#response .responsebody{
+    padding:10px;
+    width: 98%;
 }
 
 .clear {

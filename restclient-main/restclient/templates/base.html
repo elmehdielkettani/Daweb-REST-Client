@@ -11,16 +11,6 @@
 
         <meta name="description" content="A full featured Online REST Client allowing you to make REST call right from your browser" />
         <meta name="keywords" content="REST, client, Javascript, browser, online, calls, api" />
-
-        {% comment %}
-        <meta property="og:type" content="webapp" />
-        <meta property="og:site_name" content="Online REST Client" />
-        <meta property="og:title" content="REST Client" />
-        {% endcomment %}
-
-        {% comment %}
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        {% endcomment %}
         <script type="text/javascript" src="{{ MEDIA_URL }}scripts/libs/jquery.min.js"></script>
 
         <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}styles/main.css"/>
@@ -35,10 +25,7 @@
                 {% block rootContent %} {% endblock %}
 
                 <div id="footer">
-                    <ul class="InlineList">
-                        <li>&copy; 2011 Mehdi El Kettani - All rights reserved.</li>
-                        <li><a href="/sitemap/">Site map</a></li>
-                    </ul>
+                        <p>&copy; 2011 Mehdi El Kettani - All rights reserved.</p>
                 </div>
             </div>
         </div>

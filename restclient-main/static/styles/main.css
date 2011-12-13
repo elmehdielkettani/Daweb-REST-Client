@@ -1,5 +1,6 @@
-body, #content{
+body{
     margin: auto;
+	width:80%;
 }
 
 h1{

@@ -11,10 +11,17 @@
 
 <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}styles/restclient.css"/>
 <script type="text/javascript" src="{{ MEDIA_URL }}scripts/libs/jquery.base64.min.js"></script>
+<script type="text/javascript" src="http://balupton.github.com/jquery-syntaxhighlighter/scripts/jquery.syntaxhighlighter.min.js"></script>
+<script type="text/javascript">
+	$.SyntaxHighlighter.init({
+	    'wrapLines':false
+	});
+</script>
 
 <script type="text/javascript" src="{{ MEDIA_URL }}scripts/libs/shCore.js"></script>
 <script type="text/javascript" src="{{ MEDIA_URL }}scripts/libs/shBrushXml.js"></script>
-<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}styles/shCoreDefault.css"/>
+<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}styles/shThemeDefault.css"/>
 
 <script type="text/javascript">
 
@@ -43,18 +50,17 @@
         var statusText =  ResponseStatus.children("p");
         var ResponseHeaders = $("#response .responseheaders");
         var ResponseContentType;
-        var ResponseBody = $("#response .responsebody > pre");
+        var ResponseBody = $("#response .responsebody");
 
 
         //Init Globals
         var RequestHeadersMap = {};
         var DropdownArray = ['Accept', 'Content-Type', 'If-Match', 'If-Modified-Since', 'If-None-Match', 'If-Range', 'If-Unmodified-Since', 'Range'];
-        var ResponseHeadersArray = {'Accept-Range':true,  'Content-Range':true, 'Content-Type':true, 'ETag':true};
+        var ResponseHeadersArray = {'Accept-Range':true,  'Content-Range':true, 'Content-Length':true,'Content-Type':true, 'ETag':true};
         var HeaderInvisibleMap = {};
 
 
         RequestHeadersMap['Accept'] = 'application/json';
-        AddedHeadersArea.append("<tr id=Accept><td class='keycol'>Accept</td>" + "<td class='valuecol'>application/json</td>" + "<td class='buttoncol'><button class='deleteheaderbutton' class='RoundedTop RoundedBottom'>-</button></td></tr>");
         HeaderInvisibleMap["Accept"] = true;
 
 
@@ -63,12 +69,12 @@
         populateHeaders();
         RequestBody.hide();
         ResponseBody.hide();
-        loadAutocompletion();
+        //loadAutocompletion();
         
 
         SendButton.click(function(){
             ResponseBody.hide();
-            loadAutocompletion();
+            //loadAutocompletion();
             //Deal with basic OAuth
             validateEmailAndPassword(Email, Password);
             EncodedCredentials = $.base64.encode(Email.val()+":"+Password.val());
@@ -89,7 +95,7 @@
             loadingProgress.show();
             statusText.hide();
             $.ajax({
-                url: '/proxy/url/?host=' + encodeURIComponent(UrlInput.val()),
+                url: '/proxy/url/?link=' + encodeURIComponent(UrlInput.val()),
                 type: method,
                 data: RequestBodyField.val(),
                 accepts: false,
@@ -98,14 +104,13 @@
                 dataType: false,
                 scriptCharset: false,
                 beforeSend: function(xhr) {
-                    for(var key in RequestHeadersMap){
+                	for(var key in RequestHeadersMap){
                         xhr.setRequestHeader(key, RequestHeadersMap[key]);
                     }
                 },
                 complete: function(response, textStatus){
-
                     loadingProgress.hide()
-
+					
                     Response.show();
                     displayStatus(response.status, response.statusText);
                     displayHeaders(response.getAllResponseHeaders());
@@ -199,12 +204,11 @@
             }
             var HeaderString = "<dl>";
             for(someheader in new_headers){
-                if(ResponseHeadersArray[someheader]==true){
-                    HeaderString += "<dt qlksjdhflk>"+ someheader +"</dt>" + "<dd>"+ new_headers[someheader] +"</dd>";
-                    if(someheader == 'Content-Type'){
-                        ResponseContentType = new_headers[someheader];
-                    }
-                }
+                  HeaderString += "<dt>"+ someheader +"</dt>" + "<dd>"+ new_headers[someheader] +"</dd>";
+                  if(someheader == 'Content-Type'){
+                      ResponseContentType = new_headers[someheader];
+                  }
+                
             }
             HeaderString +="</dl>";
 
@@ -215,12 +219,11 @@
             if(code != 404 && code != 500){
                 ResponseBody.show();
                 if(ResponseContentType == "application/json"){
-                    ResponseBody.html(formatJson(body));
-                }else if(ResponseContentType == "application/xml"){
-                    ResponseBody.html(HtmlEncode(formatXml(body)));
+                    ResponseBody.html('<code class="highlight">'+formatJson(body)+'</code>');
                 }else{
-                    ResponseBody.html(HtmlEncode(formatXml(body)));
+                    ResponseBody.html('<code class="highlight">'+HtmlEncode(formatXml(body))+'</code>');
                 }
+                ResponseBody.syntaxHighlight();
             }
         }
 
@@ -235,11 +238,7 @@
         }
 
         function HtmlEncode(s){
-            var el = document.createElement("div");
-            el.innerText = el.textContent = s;
-            s = el.innerHTML;
-            delete el;
-            return s;
+        	return $('<div/>').text(s).html();
         }
 
         function validateEmailAndPassword(email, pass){
@@ -346,17 +345,17 @@
             return retval;
         }
         
-        function loadAutocompletion() {
-            $('#url').autocomplete({
-			  url: '/proxy/acu/',
-			  width: 300,
-			  max: 10,
-			  delay: 100,
-			  cacheLength: 1,
-			  scroll: false,
-			  highlight: false
-			});
-        }
+//         function loadAutocompletion() {
+//             $('#url').autocomplete({
+// 			  url: '/proxy/acu/',
+// 			  width: 300,
+// 			  max: 10,
+// 			  delay: 100,
+// 			  cacheLength: 1,
+// 			  scroll: false,
+// 			  highlight: false
+// 			});
+//         }
 
     });
 </script>
@@ -381,13 +380,9 @@
             <div class="authentication">
                 <h2>Basic Authentication</h2>
                 <ul>
-                    <li><label>E-mail:</label><input id="emailfield" class="RoundedTop RoundedBottom" type="text"/></li>
-                    <li><label>Password:</label><input id="passwordfield" class="RoundedTop RoundedBottom" type="password"/></li>
+                    <li><label>ID </label><input id="emailfield" class="RoundedTop RoundedBottom" type="text"/></li>
+                    <li><label>Pass </label><input id="passwordfield" class="RoundedTop RoundedBottom" type="password"/></li>
                 </ul>
-            </div>
-            <div class="requestbody">
-                <h2>Request body</h2>
-                <textarea rows="10" cols="30" id="requestbodyfield" class="RoundedTop RoundedBottom" type="text"></textarea>
             </div>
             <div class="headers">
                 <h2>Request Headers</h2>
@@ -414,20 +409,21 @@
                     </table>
                 </div>
             </div>
+            <div class="requestbody">
+                <h2>Request body</h2>
+                <textarea rows="10" cols="30" id="requestbodyfield" class="RoundedTop RoundedBottom" type="text"></textarea>
+            </div>
         </div>
     </div>
+    
     <div id="response" class="clear">
-
         <div class="responsestatus">
-            <img id="loadingProgress" style="display:none" alt="Loading..." src="http://localhost:8085/static/images/loader.gif"/>
+            <img id="loadingProgress" style="display:none" alt="Loading..." src="{{ MEDIA_URL }}images/loader.gif"/>
             <p></p>
         </div>
-
-        <div class="Shadow">&nbsp;</div>
         <div class="responseheaders">
         </div>
         <div class="responsebody">
-            <pre></pre>
         </div>
     </div>
 
